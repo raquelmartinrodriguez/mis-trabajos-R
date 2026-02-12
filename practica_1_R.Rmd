@@ -1,0 +1,197 @@
+---
+title: "practica R 1"
+author: "Raquel Martin"
+date: "2026-02-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## VECTORES
+
+```{r}
+
+#Concatenar vectores
+
+x <- c(2,4,6)
+y <- c(3,7)
+c(x,y)
+```
+```{r}
+
+#Generar sucesiones
+
+1:5
+seq(2,10,2)
+rep(c(1,3),4)
+length(rep(c(1,3),4))
+```
+
+```{r}
+#Regla del reciclaje
+
+3 + c(1,2,3)
+
+c(1,2) + c(7,8,9)
+
+```
+
+```{r}
+#Valores especiales
+
+x <- c(NA, NaN, Inf, 0,3, NULL)
+
+1/x
+
+x-x
+
+1/x-(x-x)
+
+```
+```{r}
+
+#Selección de las coordenadas de un vector
+
+x <- (1:5)^2
+x
+
+x[c(2,5)]
+
+x[-c(2,5)]
+```
+
+
+```{r}
+
+# uso de operadores lógicos
+x[x>15]
+
+which(x>15) #para conocer los índices de las coordenadas que cumplen la condicion
+```
+
+## MATRICES
+
+```{r}
+matrix(1:9, 3,3)
+```
+
+```{r}
+m <- c(1,1,1) + matrix(1:9, 3,3)
+
+m
+
+```
+
+
+```{r}
+#pegar vectores para formar matrices
+
+v <- 1:3
+z <- 4:6
+v
+z
+cbind(v,z) #cada vector será una columna
+rbind(v,z)  #cada vector será una fila
+```
+```{r}
+#Aplicar funciones a una fila o columna en una matriz
+m
+apply(m, 2, sum) #1 sobre filas y 2 sobre columnas. Hace la suma de cada columna.
+```
+
+```{r}
+sum(m) #suma todos los dígitos de la matriz
+```
+
+```{r}
+apply (m, 1, sort)# ordena los dígitos por filas
+```
+## LISTAS
+
+```{r}
+
+milista <- list(nombre= "Pepe", no.hijos= 3, edades.hijos = c(4,7,9))
+
+str(milista) #para conocer la estructura de la lista
+```
+
+```{r}
+# Extraer elementos de una lista
+
+milista$nombre
+
+```
+```{r}
+# Extraer elementos de una lista
+
+milista[1]
+
+```
+```{r}
+# Extraer elementos de una lista
+
+milista[[1]]
+
+```
+```{r}
+# Extraer elementos de una lista
+
+milista[[3:2]]
+
+```
+#ANÁLISIS EXPLORATORIO DE DATOS EN R
+
+## DATA FRAMES
+
+```{r}
+x <- 7:9
+y <- c("a", "b", "c")
+
+mifichero <- data.frame(edad = x, grupo = y)
+mifichero
+```
+
+```{r}
+str(mifichero)
+```
+
+```{r}
+mifichero$edad
+```
+
+```{r}
+mifichero[2,2]
+```
+```{r}
+mifichero[2,]
+```
+### Aplicación de un comando a cada variable de un dataframe
+
+
+```{r}
+str(faithful)
+
+```
+
+```{r}
+sapply(faithful, summary)
+```
+```{r}
+lapply(faithful, summary) #mismo resultados pero estructurados de forma diferente
+```
+
+
+### Factores
+
+```{r}
+x <- c(2,2,3,4,2,5)
+x
+```
+
+```{r}
+xfactor <- factor(x)
+xfactor
+```
+
